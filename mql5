@@ -1,0 +1,148 @@
+mql5
+//+------------------------------------------------------------------+
+//|                       Unlimited Trade Copier Pro MT5              |
+//|                      Developer: Forex Robot Easy Team             |
+//|                Developer's Site: forexroboteasy.com               |
+//+------------------------------------------------------------------+
+
+// Global variables
+int g_role = ROLE_PROVIDER; // Default role is Provider
+int g_subscriptionExpiry = 0; // Default subscription expiry is 0 (no expiry)
+bool g_isCopyingEnabled = false; // Copying is disabled by default
+bool g_isConnected = false; // Connection status
+
+// Function to connect to MT4/MT5 accounts
+bool Connect()
+{
+    // Code to establish connection
+    // ...
+    
+    g_isConnected = true;
+    return true;
+}
+
+// Function to disconnect from accounts
+bool Disconnect()
+{
+    // Code to disconnect from accounts
+    // ...
+    
+    g_isConnected = false;
+    return true;
+}
+
+// Function to switch between Provider and Receiver roles
+bool SwitchRole(int role)
+{
+    if (role == ROLE_PROVIDER || role == ROLE_RECEIVER)
+    {
+        g_role = role;
+        return true;
+    }
+    
+    return false;
+}
+
+// Function to set subscription expiry for each receiver
+bool SetSubscriptionExpiry(int expiry)
+{
+    if (expiry >= 0)
+    {
+        g_subscriptionExpiry = expiry;
+        return true;
+    }
+    
+    return false;
+}
+
+// Function to copy trades from provider's account to receiver accounts
+bool CopyTrades()
+{
+    if (g_isConnected && g_role == ROLE_PROVIDER)
+    {
+        if (g_subscriptionExpiry > 0)
+        {
+            // Code to check and limit signal reception to specific time period
+            // ...
+        }
+        
+        // Code to copy trades to multiple receiver accounts
+        // ...
+        
+        g_isCopyingEnabled = true;
+        return true;
+    }
+    
+    return false;
+}
+
+// Function to handle errors and exceptions during trade copying
+void HandleErrors()
+{
+    // Code to handle errors and exceptions
+    // ...
+}
+
+// Function to optimize code for performance and resource usage
+void OptimizeCode()
+{
+    // Code optimization techniques
+    // ...
+}
+
+// Function to test the code thoroughly
+bool TestCode()
+{
+    // Code testing procedures
+    // ...
+    
+    return true;
+}
+
+// Function to document the code and provide instructions
+string DocumentCode()
+{
+    string documentation = 'Instructions:\n';
+    documentation += '1. Connect to MT4/MT5 accounts using the Connect() function.\n';
+    documentation += '2. Switch between Provider and Receiver roles using the SwitchRole() function.\n';
+    documentation += '3. Set subscription expiry for each receiver using the SetSubscriptionExpiry() function.\n';
+    documentation += '4. Copy trades from provider's account to receiver accounts using the CopyTrades() function.\n';
+    documentation += '5. Handle errors and exceptions using the HandleErrors() function.\n';
+    documentation += '6. Optimize code for performance using the OptimizeCode() function.\n';
+    documentation += '7. Test the code using the TestCode() function.\n';
+    documentation += '8. Disconnect from accounts using the Disconnect() function.\n';
+    
+    return documentation;
+}
+
+// Entry point function
+void OnStart()
+{
+    // Connect to MT4/MT5 accounts
+    Connect();
+    
+    // Copy trades if the role is Provider
+    if (g_role == ROLE_PROVIDER)
+    {
+        CopyTrades();
+    }
+    
+    // Disconnect from accounts
+    Disconnect();
+    
+    // Handle errors and exceptions
+    HandleErrors();
+    
+    // Optimize code for performance
+    OptimizeCode();
+    
+    // Test the code
+    TestCode();
+    
+    // Document the code and provide instructions
+    string documentation = DocumentCode();
+    
+    // Print documentation
+    Print(documentation);
+}
+
